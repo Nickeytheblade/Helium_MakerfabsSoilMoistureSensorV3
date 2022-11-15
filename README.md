@@ -1,6 +1,6 @@
 # Doccumentation from Ducktator (Hexaspot.com) for EU868
 
-# https://big-pisces-61a.notion.site/Things-I-had-to-do-to-get-the-MakerFabs-Soil-Moisture-Sensor-V3-working-on-Helium-for-EU868-4775729c5f304c9ab6fd3efc7b99af02
+https://big-pisces-61a.notion.site/Things-I-had-to-do-to-get-the-MakerFabs-Soil-Moisture-Sensor-V3-working-on-Helium-for-EU868-4775729c5f304c9ab6fd3efc7b99af02
 
 
 # Helium_MakerfabsSoilMoistureSensorV3
