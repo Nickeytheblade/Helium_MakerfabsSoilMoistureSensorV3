@@ -6,18 +6,21 @@ function Decoder(bytes, port) {
 		var decodedTemp = 0;
 		var decodedHumi = 0;
 		var decodedBatt = 0;
+		var decodedADC = 0;
 
 		// seperate raw data from payload
 		var rawSoil = bytes[0] | bytes[1] * 256;
 		var rawTemp = bytes[2] | bytes[3] * 256;
 		var rawHumi = bytes[4] | bytes[5] * 256;
 		var rawBatt = bytes[6] | bytes[7] * 256;
+		var rawADC  = bytes[8] | bytes[9] * 256;
 
 		// decode raw data to values
 		decodedTemp = sflt162f(rawTemp) * 100; // value calculated to range -1..x..+1 by dividing /100
 		decodedHumi = uflt162f(rawHumi) * 100; // value calculated to range 0..x..+1 by dividing /100
 		if (rawBatt !== 0) decodedBatt = rawBatt / 1000; // batterie voltage ist transmitted in mV, recalculate in V
-
+                decodedADC = rawADC; // No translation required
+                
 		// definition of the decimal places
 		decodedTemp = decodedTemp.toFixed(2);
 		decodedHumi = decodedHumi.toFixed(2);
@@ -29,7 +32,8 @@ function Decoder(bytes, port) {
 				soilMoisture: rawSoil, // %
 				temperature: decodedTemp, // C
 				humidity: decodedHumi, // %
-				battery: decodedBatt // V
+				battery: decodedBatt, // V
+				adc: decodedADC
 			},
 			warnings: [],
 			errors: []
